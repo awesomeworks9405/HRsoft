@@ -1,0 +1,62 @@
+.p-20{
+    padding: 50px 50px
+}
+.print-title{
+    font-family: serif;
+    font-size: 20px;
+    border-right: solid 1px #ccc;
+    padding-right: 20px
+}
+.print-img{
+    height: 60px;
+    margin-top: -20px;
+    margin-left: 13px
+}
+.reg-title{
+    margin-top: 20px;
+    font-family: arial;
+    font-size: 22px
+}
+.left-desc{
+    font-family: arial !important;
+}
+.left-desc h6{
+    line-height: 11px;
+    font-size: 15px;
+}
+.phone-no{
+    font-family: arial;
+    font-size: 15px;
+}
+.sect-banner{
+    background: #0b4c88;
+    padding: 5px 15px;
+    margin-top: 15px
+}
+.banner-name{
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    margin-top: 4px;
+    letter-spacing: .5px
+}
+.input-name{
+    font-family: arial;
+    font-size: 14px
+}
+.input-name.tiny{
+    font-family: arial;
+    font-size: 12px;
+    color: #7e7e7e
+}
+.print-input{
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    width: 100%;
+    border-bottom: 1px solid #000000;
+    height: 30px;
+    font-family: arial;
+    font-size: 13px;
+    padding: 0px 10px
+}

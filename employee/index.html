@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="author" content="Anthony Phillips">
+    <meta name="keywords" content="SDI home,sustainable development institute,SDI,Institutes,SDI jos">
+    <meta name="description" content="SDI | Sustainable development institute">
+    <title>SDI | Sustainable Development Institute </title>
+    <!-- css files imports/logo -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/aos.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/hamburgers.min.css">
+    <!-- logo icon image for browser tabs -->
+    <link rel="icon" href="assets/img/logo.png">
+</head>
+
+<body>
+    <!-- preloader div -->
+    <div class="preloader">
+        <div class="loader-frame">
+            <div class="loader1" id="loader1"></div>
+            <div class="loader2" id="loader2"></div>
+        </div>
+        <div class="load-txt">welcome to sdi ...</div>
+    </div>
+    <!-- preloader div -->
+    <!-- top menu bar/background container -->
+    <nav class="nav navbar fixed-top top-menu menu-lg" id="menu-bar">
+        <div class="col-lg-12">
+            <div class="row">
+                <!-- logo box -->
+                <div class="col-lg-3 col-sm-12 col-md-12">
+                    <!-- .html was used for .htaccess to redirect to / i.e index page -->
+                    <a href="index.html" class="logo">
+                        <img src="assets/img/logo.png" />
+                        <h6>SDI</h6>
+                    </a>
+                </div>
+                <!-- link menu container -->
+                <div class="col-lg-9 col-sm-12 col-md-12 link-container">
+                    <div class="link-item">
+                        <a href="#milestone" class="link-drop">our milestones</a>
+                        <div class="line-hvr"></div>
+                    </div>
+                    <div class="link-item">
+                        <a href="#the_company">the company <i class="fa fa-angle-down link-icon"></i></a></a>
+                        <div class="drop-container">
+                            <div class="link-drop-box"><a href="#summary" class="link-drop">our summary</a></div>
+                            <div class="link-drop-box"><a href="#why" class="link-drop">why sdi</a></div>
+                            <div class="link-drop-box">
+                                <a href="#team" class="link-drop">meet the team</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="link-item">
+                        <a href="#sdi">sdi <i class="fa fa-angle-down link-icon"></i></a>
+                        <div class="drop-container">
+                            <div class="link-drop-box"><a href="history">our history</a></div>
+                            <div class="link-drop-box"><a href="courses">our courses</a></div>
+                            <div class="link-drop-box"><a href="faculties">our faculties</a></div>
+                            <div class="link-drop-box"><a href="gallery">our gallery</a></div>
+                            <div class="link-drop-box"><a href="payment">payments</a></div>
+                            <div class="link-drop-box"><a href="staff_appr.php">Employee Appraisal </a></div>
+                        </div>
+                    </div>
+                    <div class="link-item">
+                        <a class="link-drop" href="#contact">contact us</a>
+                        <div class="line-hvr"></div>
+                    </div>
+                    <div class="link-item">
+                        <a href="login.php">admin</a>
+                        <div class="line-hvr"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- small menu -->
+    <nav class="small-menu fixed-top nav navbar">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-lg-6 col-sm-4">
+                    <div class="w-100">
+                        <a href="index.html" class="small-logo">
+                            <img src="assets/img/logo.png">
+                            <h6>sdi</h6>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-8">
+                    <!-- toggle button for small device menu -->
+                    <div id="menuToggle" aria-label="true">
+                        <div class="hamburger hamburger--spin" id="ham">
+                            <div class="hamburger-box">
+                                <div class="hamburger-inner"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- toggle button for small device menu -->
+                </div>
+            </div>
+        </div>
+        <!-- menu bar -->
+        <div class="small-menu-bar" id="s-menu-bar">
+            <div class="small-link">
+                <a href="#milestone" class="link-drop">our milestones</a>
+            </div>
+            <div class="small-link">
+                <a href="#contact" class="link-drop">contact us</a>
+            </div>
+            <div class="small-link">
+                <a href="#" data-toggle="collapse" data-target="#drop_company">the company <i class="ml-3 fa fa-angle-down"></i></a>
+            </div>
+            <div id="drop_company" class="collapse small-acc">
+                <div class="small-link"><a href="#summary" class="link-drop">our summary</a></div>
+                <div class="small-link"><a href="#why" class="link-drop">why sdi</a></div>
+                <div class="small-link"><a href="#team" class="link-drop">meet the team</a></div>
+            </div>
+            <div class="small-link"><a href="#" data-toggle="collapse" data-target="#drop_sdi">sdi<i class="ml-3 fa fa-angle-down"></i></a></div>
+            <div id="drop_sdi" class="collapse small-acc">
+                <div class="small-link">
+                    <a href="history">our history</a>
+                </div>
+                <div class="small-link">
+                    <a href="courses">our courses</a>
+                </div>
+                <div class="small-link">
+                    <a href="faculties">our faculties</a>
+                </div>
+                <div class="small-link">
+                    <a href="gallery">our gallery</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </nav>
+    <!-- about SDI with animation section  -->
+    <section class="carousel-overlay ">
+        <div class="custom1 owl-carousel owl-theme">
+            <div class="item">
+                <div class="sdi-carousel-img img-property" style="background-image:url('assets/img/cus1.jpg')">
+                    <div class="text-explanation">
+                        <h2 class="slide-big-txt animated slideInUp">sdi</h2>
+                        <h2 class="slide-small-txt animated bounceIn ad-8">Sustainable Development Institute</h2>
+                        <a href="#milestone" class="link-drop animated fadeIn ad-10 btn btn-success btn-custom-white mt-1">Learn more</a>
+                        <a href="register" class="animated fadeIn ad-12 btn btn-success btn-custom-green mt-1 ml-3">Register today</a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="sdi-carousel-img img-property" style="background-image:url('assets/img/cus2.jpg')">
+                    <div class="text-explanation">
+                        <h2 class="slide-big-txt animated slideInUp">training</h2>
+                        <h2 class="slide-small-txt animated bounceIn ad-8">training students for community development</h2>
+                        <a href="register" class="animated fadeIn ad-12 btn btn-success btn-custom-green mt-1">Register today</a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="sdi-carousel-img img-property" style="background-image:url('assets/img/cus3.jpg')">
+                    <div class="text-explanation">
+                        <h2 class="slide-big-txt animated slideInUp">our courses</h2>
+                        <h2 class="slide-small-txt animated bounceIn ad-8">get to know the courses we offer</h2>
+                        <a href="courses" class="animated fadeIn ad-10 btn btn-success btn-custom-white mt-1">Learn more</a>
+                        <a href="register" class="animated fadeIn ad-12 btn btn-success btn-custom-green mt-1 ml-3">Register today</a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="sdi-carousel-img img-property" style="background-image:url('assets/img/cus4.jpg')">
+                    <div class="text-explanation">
+                        <h2 class="slide-big-txt animated slideInUp">choose sdi</h2>
+                        <h2 class="slide-small-txt animated bounceIn ad-8">we help in empowering students with unique knowledge</h2>
+                        <a href="#why" class="link-drop animated fadeIn ad-10 btn btn-success btn-custom-white mt-1">Learn more</a>
+                        <a href="register" class="animated fadeIn ad-12 btn btn-success btn-custom-green mt-1 ml-3">Register today</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- milestones sections -->
+    <section class="mt-100 p-20 greybg" id="milestone">
+        <!-- header design box... -->
+        <div class="header-box d-block justify-content-center w-100 aos-item" data-aos="fade-up">
+            <h6 class="sub-topic w-100">what we have accomplished</h6>
+            <div class="d-flex w-100 justify-content-center mt-3">
+                <div>
+                    <h6 class="header-topic">our milestones</h6>
+                </div>
+                <div class="arrow-2 img-property"></div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="d-flex w-100 justify-content-center">
+                <div class="milestone-wrapper col-lg-12">
+                    <div class="milestone-box col-lg-4 col-sm-12 aos-item" data-aos="fade-up">
+                        <div class="txt-center">
+                            <h6 class="m-txt">25+</h6>
+                        </div>
+                        <h6 class="m-topic">workers</h6>
+                    </div>
+                    <div class="milestone-box col-lg-4 col-sm-12 aos-item" data-aos="slide-up">
+                        <div class="txt-center">
+                            <h6 class="m-txt">42+</h6>
+                        </div>
+                        <h6 class="m-topic">projects completed</h6>
+                    </div>
+                    <div class="milestone-box col-lg-4 col-sm-12 aos-item" data-aos="fade-up">
+                        <div class="txt-center">
+                            <h6 class="m-txt">10+</h6>
+                        </div>
+                        <h6 class="m-topic">courses</h6>
+                    </div>
+                    <div class="milestone-box col-lg-4 col-sm-12 aos-item" data-aos="slide-up">
+                        <div class="txt-center">
+                            <h6 class="m-txt">7+</h6>
+                        </div>
+                        <h6 class="m-topic">management team</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- header design box... -->
+    </section>
+
+    <!-- the company as a whole -->
+    <section class="mt-100 p-20 greybg" id="summary">
+        <!-- header design box... -->
+        <div class="header-box d-block justify-content-center w-100 aos-item" data-aos="fade-up">
+            <h6 class="sub-topic w-100">about sdi</h6>
+            <div class="d-flex w-100 justify-content-center mt-3">
+                
+                <div>
+                    <h6 class="header-topic">the company</h6>
+                </div>
+                <div class="arrow-2 img-property"></div>
+            </div>
+        </div>
+
+        <!-- tabs design -->
+        <div class="mt-5 col-lg-12">
+            <div class="space">
+                <div class="w-100 p-10 mb-4 side-bar aos-item" data-aos="slide-up">
+                    <div class="nav nav-pills company-abt-align mb-5" id="v-pills-tab" role="tablist">
+                        <a class="company-link nav-link active img-property" data-toggle="pill" href="#summary-tab">
+                            <h6>our summary</h6>
+                        </a>
+                        <a class="company-link nav-link img-property" data-toggle="pill" href="#vision-tab">
+                            <h6>our vision</h6>
+                        </a>
+                        <a class="company-link nav-link img-property" data-toggle="pill" href="#mission-tab">
+                            <h6>our mission</h6>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="w-100 account-menu">
+                    <div class="tab-content mb-5" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="summary-tab">
+                            <div class="tab-bg">
+                                <p class="tab-explain">
+                                    Human Capital been one of the key determinants of economic growth for both developing and advanced economies, then it is imperative to consider the major human capital development determinants which is EDUCATION/TRAINING. There exists an enormous interest
+                                    in clarification of the relationship between education and economic growth. Over past 30 years, there have been conducted studies by economists about the connection between education and economic growth. There are actually
+                                    many publications which provides strong evidence that suggest a correlation between the two. Applied Education has an exponential factor on economy of any nation. The exponential factor can either be positive or negative
+                                    as the absence of entrepreneurial education result in poor economy. Community ResearchGate (CR) 2017 reports that 80% of graduates in Africa are unemployed and the impact of high unemployment index on the continent/national’s
+                                    economy is unthinkable. The increase in crime, insecurity, suicide, poverty ratio, high mortality and many other socio-economic issues are resultant of large unproductive percentage of Africa countries. Even the 20%
+                                    employed are low income earners which calls for serious attention and review. Currently the minimum wage across Africa is unthinkable compared to the rest of the world. One of the critical factor for abysmal minimum
+                                    wage is the Gross Domestic Product (GDP) index of a nation and this could influence Gross National Income (GNI) of a nation upwardly or downwardly. The quality of education is one of the major factor for non-employability
+                                    of most graduates in Africa and non-integration of entrepreneurial education in the course of study is limiting creativity, job creation, indigenous solution and execution of great idea of African Citizens. Sustainable
+                                    Development Institute was establish to respond to this gaps and serves as knowledge incubation centre through training and development of her students towards the transformation of African nations.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="vision-tab">
+                            <div class="tab-bg">
+                                <p class="tab-explain">
+                                    A holistic institute committed to human capital development for sustainable growth.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="mission-tab">
+                            <div class="tab-bg">
+                                <p class="tab-explain">
+                                    We exist to enhance Human Capital Development through training with applied and Entrepreneurial Education, transforming Human, Community and Governance with sustainable development initiatives.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- accordion designs -->
+        <div class="col-lg-12 mt-5">
+            <div class="space">
+                <div class="panel-group" id="accordion">
+                    <div class="company-acc aos-item" data-aos="fade-up">
+                        <a class="acc-title" data-toggle="collapse" href="#collapse1"><i class="fa fa-angle-down acc-icon"></i>Our strategy</a>
+                        <div id="collapse1" class="panel-collapse collapse in">
+                            <div class="acc-body">
+                                <div class="strategy">
+                                    ENGAGE, EQUIP AND ENTRUST
+                                </div>
+                                <p>
+                                    We engage, equip and entrust students with cutting edge resources and training for personal, corporate, national and continental transformation. Trained students are in turn entrusted with transformation of their core platform of influence, community,
+                                    nation and continent at large.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="company-acc aos-item" data-aos="fade-up">
+                    <a class="acc-title" data-toggle="collapse" href="#collapse2"><i class="fa fa-angle-down acc-icon"></i>Our identity</a>
+                    <div id="collapse2" class="panel-collapse collapse in">
+                        <div class="acc-body">
+                            <p>
+                                Sustainable Development Institute is a faith based institute with sole aim of facilitating human capital development towards the transformation of human and community development systems through strategic resourcing and deployment of resourced for global
+                                educational, political and Economic advancement.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="company-acc aos-item" data-aos="fade-up">
+                    <a class="acc-title" data-toggle="collapse" href="#collapse4"><i class="fa fa-angle-down acc-icon"></i>the company's background</a>
+                    <div id="collapse4" class="panel-collapse collapse in">
+                        <div class="acc-body">
+                            <p>
+                                Living in an era of Globalization, community forces are still perceived as the most supportive or strengthened factors to mobilize internal and external resources, and initiate development process for ensuring quality of life for those who live in all
+                                setting through a bottom-up approach. There is a broad agreement that community organization (formal or informal) play important role in mastering and fostering development initiatives by bringing in key actors in economy,
+                                leadership and social life of the community into development opportunity and facilitation. In pursuing its vision and mandate, Centre for Human and Community Development (CHCD) developed Community Driven Development Initiatives
+                                (CDDI) also known as Community Development and Discipleship Initiative, which are instrumental for people and National development. Development is achieved, and becomes genuine when it is driven by the Nationals through
+                                initiatives that are aimed at transforming human and national socio-economic life. These initiatives produce highly specialized public goods like improved human and social capital of a Nation. Sustainable Development Institute
+                                exist to provide educational services through a cutting edge and specific training towards human capital development for a sustainable and balanced national growth. Specific education is very important for strategic growth
+                                and development of all citizens for productive contribution in Education, Health, and Economic and Political life of any nation. SDI engage, equip and entrust classified ignorant or uneducated and other marginalized/disadvantaged
+                                individuals with capacity needed for their inherent potential development. The uneducated are often described as reason for poverty of any nation. In contrast, SDI considers the uneducated and their ignorant state as an
+                                assets, and productive citizens in development process as we engage, equip and entrust such with specific training for effective service delivery that aids or leads to personal and national economic growth and transformation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="company-acc aos-item" data-aos="fade-up">
+                    <a class="acc-title" data-toggle="collapse" href="#collapse5"><i class="fa fa-angle-down acc-icon"></i>OUR AIMS/OBJECTIVES.</a>
+                    <div id="collapse5" class="panel-collapse collapse in">
+                        <div class="acc-body">
+                            <p>
+                                The aims of Sustainable Development Institute is to enable citizens realize their full potentials through self-realization and development of necessary skills for effective execution of ideas with idea incubation, strategic thinking, planning and implementation.
+                                The institute mark qualitative and quantitative growth of her student for strategic development and deployment. The Institute aims at promoting education, research, specific training and professional development with specific
+                                attention to productive and non-productive echelon of society as we improve socio-economic and spiritual life of all citizens.
+
+                                <li class="custom-list">To organize educational and professional courses</li>
+                                <li class="custom-list">To work as training agency for personnel’s, corporate organizations and government </li>
+                                <li class="custom-list">To conduct research and develop strategy for solving specific problem</li>
+                                <li class="custom-list">To organize seminars, conferences, study groups, lectures, and social action for transformation </li>
+                                <li class="custom-list">To undertake monitoring and evaluation studies </li>
+                                <li class="custom-list">To provide consultancy service in the fields of training, research and development </li>
+                                <li class="custom-list">To initiate and facilitate innovative development projects </li>
+                                <li class="custom-list">To initiate and facilitate Networking platforms for professionals and resource development</li>
+                                <li class="custom-list">To prepare and provide print, audio-visual and other resource materials for training, education, Health, Socio-economic and research activities </li>
+                                <li class="custom-list">To train and mobilize local personnel, resources in employment and income generating activities for students </li>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </section>
+
+    <!-- what makes us prior -->
+    <section class="mt-100 p-20" id="why">
+        <!-- header design box... -->
+        <div class="header-box d-block justify-content-center w-100 aos-item" data-aos="fade-up">
+            <h6 class="sub-topic w-100">why choose sdi(sustainable development institute).</h6>
+            <div class="d-flex w-100 justify-content-center mt-3">
+                
+                <div>
+                    <h6 class="header-topic">what makes us prior.</h6>
+                </div>
+                <div class="arrow-2 img-property"></div>
+            </div>
+        </div>
+
+        <!-- what makes us prior -->
+        <div class="col-lg-12">
+            <div class="d-flex w-100 justify-content-center">
+                <div class="prior-wrapper col-lg-12">
+                    <div class="prior-box col-lg-4 col-sm-12 aos-item" data-aos="fade-up">
+                        <div class="prior-circle"><i class="fa fa-money"></i></div>
+                        <div class="prior-square">
+                            <div class="prior-header">investment.</div>
+                            <p>
+                                we consider investment in people and how much of the investment is leverage on by the economy. Talent scarcity and population dynamics are quite considered in economy of every nation.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="prior-box col-lg-4 col-sm-12 aos-item" data-aos="slide-up">
+                        <div class="prior-circle"><i class="fa fa-users"></i></div>
+                        <div class="prior-square">
+                            <div class="prior-header">collaboration.</div>
+                            <p>
+                                SDI seeks collaboration with organizations to correct the abnormal position of African Countries on Human Development Index. Nigeria in the Human Capital Development index (HDI 2018) was ranked 157 out of 189 in the world.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="prior-box col-lg-4 col-sm-12 aos-item" data-aos="fade-up">
+                        <div class="prior-circle"><i class="fa fa-signal"></i></div>
+                        <div class="prior-square">
+                            <div class="prior-header">focus.</div>
+                            <p>
+                                Our team looks forward to working together in taking the country and Africa continent from the bottom position in human capital development index (HDI) to the top through intentional and collaborative human and community development efforts.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- meet the team -->
+    <section class="mt-100" id="team">
+        <!-- header design box... -->
+        <div class="header-box d-block justify-content-center w-100 aos-item" data-aos="fade-up" >
+            <h6 class="sub-topic w-100">people that contributed to our success.</h6>
+            <div class="d-flex w-100 justify-content-center mt-3">
+                
+                <div>
+                    <h6 class="header-topic">meet the team.</h6>
+                </div>
+                <div class="arrow-2 img-property"></div>
+            </div>
+        </div>
+
+        <div class="team-bg img-property col-lg-12 mt-5 aos-item" data-aos="fade-up">
+            <div class="mt-5 col-lg-12 row">
+                <div class="p-10 mb-4 side-bar col-lg-12">
+                    <div class="nav nav-pills mb-5 d-flex justify-content-center" id="v-pills-tab" role="tablist">
+                        <a class="team-link nav-link active img-property aos-item" data-aos="fade-up" data-toggle="pill" href="#board-tab">
+                            <h6><i class="fa fa-building mr-4"></i>board of trustees</h6>
+                        </a>
+                        <a class="team-link nav-link img-property aos-item ad-2" data-aos="fade-up" data-toggle="pill" href="#advisory-tab">
+                            <h6><i class="fa fa-home mr-4"></i>advisory board</h6>
+                        </a>
+                        <a class="team-link nav-link img-property aos-item ad-4" data-aos="fade-up" data-toggle="pill" href="#manage-tab">
+                            <h6><i class="fa fa-users mr-4"></i>the management team</h6>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="account-menu col-lg-12">
+                    <div class="tab-content mb-5" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="board-tab">
+                            <div class="team-con row">
+                                <div class="team-box aos-item" data-aos="fade-up">
+                                    <div class="team-img img-property" style="background-image: url('assets/img/fed.jpg')"></div>
+                                    <h6 class="team-name"> Ferdinand Nweke</h6>
+                                    <h6 class="team-title">chairman</h6>
+                                </div>
+
+                                <div class="team-box img-property aos-item" data-aos="slide-up">
+                                    <div class="team-img img-property" style="background-image: url('assets/img/lydia.jpg')"></div>
+                                    <div class="team-name"> Lydia Ayodele </div>
+                                    <div class="team-title">Secretary.</div>
+                                </div>
+
+                                <div class="team-box aos-item" data-aos="fade-up">
+                                    <div class="team-img img-property" style="background-image: url('assets/img/fidel.jpg')"></div>
+                                    <div class="team-name">Fidel Idoko</div>
+                                    <div class="team-title">Legal Adviser.</div>
+                                </div>
+
+                                <div class="team-box aos-item" data-aos="slide-up">
+                                    <div class="team-img img-property" style="background-image: url('assets/img/olutayo.jpg')"></div>
+                                    <div class="team-name">Olutayo Adeyemi </div>
+                                    <div class="team-title">Treasurer.</div>
+                                </div>
+                                <div class="team-box aos-item" data-aos="fade-up">
+                                    <div class="team-img img-property" style="background-image: url('assets/img/sam.jpg')"></div>
+                                    <div class="team-name"> Samuel Ayodele </div>
+                                    <div class="team-title">International Director.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="advisory-tab">
+                            <div class="team-con row">
+                                <div class="team-box">
+                                    <div class="team-img img-property" style="background-image: url('assets/img/mike.jpg')"></div>
+                                    <div class="team-name"> Mike Adegbile</div>
+                                    <div class="team-title">Chairman.</div>
+                                </div>
+
+                                <div class="team-box">
+                                    <div class="team-img img-property" style="background-image: url('assets/img/jerry.jpg')"></div>
+                                    <div class="team-name"> Jerry Anze </div>
+                                    <div class="team-title">member.</div>
+                                </div>
+
+                                <div class="team-box">
+                                    <div class="team-img img-property" style="background-image: url('assets/img/abiodun.jpg')"></div>
+                                    <div class="team-name"> Abiodun Hassan</div>
+                                    <div class="team-title">member.</div>
+                                </div>
+                                <div class="team-box">
+                                    <div class="team-img img-property" style="background-image: url('assets/img/sule.jpg')"></div>
+                                    <div class="team-name"> Joshua Sule</div>
+                                    <div class="team-title">member.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="manage-tab">
+                            <div class="team-con row">
+                                <div class="team-box">
+                                    <div class="team-img img-property" style="background-image: url('assets/img/sam.jpg')"></div>
+                                    <div class="team-name"> Samuel Ayodele </div>
+                                    <div class="team-title">International Director.</div>
+                                </div>
+
+                                <div class="team-box">
+                                    <div class="team-img img-property" style="background-image: url('assets/img/solomon.jpg')"></div>
+                                    <div class="team-name"> Adedayo Solomon</div>
+                                    <div class="team-title">Team Leader (Finance and Administration).</div>
+                                </div>
+
+                                <div class="team-box">
+                                    <div class="team-img img-property" style="background-image: url('assets/img/tim.jpg')"></div>
+                                    <div class="team-name"> Timothy Oyebode</div>
+                                    <div class="team-title">Team Leader (Programme & Logistics).</div>
+                                </div>
+
+                                <div class="team-box">
+                                    <div class="team-img img-property" style="background-image: url('assets/img/nissi.jpg')"></div>
+                                    <div class="team-name"> Peter Nissi </div>
+                                    <div class="team-title">Team Leader (Mobilization & Partnership Development).</div>
+                                </div>
+
+                                <div class="team-box">
+                                    <div class="team-img img-property" style="background-image: url('assets/img/lydia.jpg')"></div>
+                                    <div class="team-name"> Lydia Ayodele</div>
+                                    <div class="team-title">Human Resource Manager.</div>
+                                </div>
+
+                                <div class="team-box">
+                                    <div class="team-img img-property" style="background-image: url('assets/img/whuni.jpg')"></div>
+                                    <div class="team-name"> Wuhni Fawe </div>
+                                    <div class="team-title">Team Leader (Media/Publication).</div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- contact us -->
+    <section class="mt-100 p-20 greybg" id="contact">
+        <!-- header design box... -->
+        <div class="header-box d-block justify-content-center w-100 aos-item" data-aos="fade-up">
+            <h6 class="sub-topic w-100">want to get connected with us.</h6>
+            <div class="d-flex w-100 justify-content-center mt-3">
+                <div>
+                    <h6 class="header-topic">contact us.</h6>
+                </div>
+            </div>
+        </div>
+
+        <!-- contact us form. -->
+        <div class="col-lg-12">
+            <div class="contact-form">
+                <form method="POST" name="form" action="#">
+
+                    <div class="form-group aos-item" data-aos="fade-up">
+                        <input type="text" name="title" class="input" required />
+                        <h6 class="form-label">title</h6>
+                    </div>
+
+                    <div class="form-group aos-item" data-aos="fade-up">
+                        <input type="text" name="fname" class="input" required />
+                        <h6 class="form-label">Firstname</h6>
+                    </div>
+
+                    <div class="form-group aos-item" data-aos="fade-up">
+                        <input type="text" name="lname" class="input" required />
+                        <h6 class="form-label">lastname</h6>
+                    </div>
+
+                    <div class="form-group aos-item" data-aos="fade-up">
+                        <input type="email" name="email" class="input" required />
+                        <h6 class="form-label">Email</h6>
+                    </div>
+
+                    <div class="form-group aos-item" data-aos="fade-up">
+                        <input type="text" name="location" class="input" required />
+                        <h6 class="form-label">location</h6>
+                    </div>
+
+                    <textarea class="input aos-item" data-aos="fade-up" name="message" placeholder="Tell us more about you." rows="8" required></textarea>
+
+                    <div class="df justify-content-center w-100 aos-item" data-aos="fade-up">
+                        <button type="submit" class="submit-form">Submit</button>
+                    </div>
+                </form>
+
+                <div class="alert-box">
+                    <div id="close-alert">&times;</div>
+                    <p id="result"></p>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- footer section -->
+    <section class="p-20 footer-container img-property">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="footer-logo aos-item" data-aos="slide-up">
+                        <img src="assets/img/logo.png" alt="">
+                        <h6>Sustainable development institute</h6>
+                    </div>
+                    <p class="footer-desc aos-item" data-aos="fade-up">
+                        SDI exist to provide educational services through a cutting edge and specific training towards human capital development for a sustainable and balanced national growth.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footer-header aos-item" data-aos="fade-up">our company</div>
+                    <div class="d-flex w-100 aos-item" data-aos="fade-up">
+                        <i class="fa fa-map-marker footer-icon"></i>
+                        <p class="icon-desc">
+                            3,beach road,beside heritage bank jos, Plateau State Nigeria
+                        </p>
+                    </div>
+                    <div class="d-flex w-100 aos-item" data-aos="fade-up">
+                        <i class="fa fa-phone-square footer-icon"></i>
+                        <p class="icon-desc">
+                            +2348153011817
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footer-header aos-item" data-aos="fade-up">STAY IN TOUCH</div>
+                    <div class="d-flex w-100">
+                        <a target="_blank" class="aos-item ad-6" data-aos="fade-up" href="https://m.facebook.com/chcdonline/posts">
+                            <div class="footer-contact">
+                                <i class="fa fa-facebook"></i>
+                            </div>
+                        </a>
+                        <a target="_blank" class="aos-item ad-8" data-aos="fade-up" href="https://twitter.com/chcdonline">
+                            <div class="footer-contact">
+                                <i class="fa fa-twitter"></i>
+                            </div>
+                        </a>
+                        <a target="_blank" class="aos-item ad-10" data-aos="fade-up" href="https://m.youtube.com/channel/UCraNHSXeBRajeV4P3Ha0SAg">
+                            <div class="footer-contact">
+                                <i class="fa fa-youtube"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="footer-bottom">
+                <div class="oracode float-left">
+                    <span id="fullyear"></span> &copy; All copyrights reserved by SDI.
+                </div>
+
+                <div class="oracode float-right">
+                    powered by <a href="https://oracode.net" class="ml-1" target="_blank" id="company-link"> oracode.net</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- footer section -->
+
+    <!-- scroll to top -->
+    <div class="scrollTop img-property" id="scrollTop"><i class="scrolltop-hvr fa fa-angle-double-up"></i></div>
+</body>
+<!-- script imports -->
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/aos.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/index.js"></script>
+<script src="assets/js/respond.min.js"></script>
+
+</html>
