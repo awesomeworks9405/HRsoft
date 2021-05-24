@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sustainable Development Institute | Download Form</title>
+    <title>HRsoft | Login</title>
     <!-- css files imports/logo -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/animate.css">
@@ -19,11 +19,11 @@
     <link rel="icon" href="assets/img/logo.png">
 </head>
 
-<body>
+<body style="background-color: black;">
     <section class="mt-100 payment-box" id="form">
         <!-- header design box... -->
         <div class="header-box d-block justify-content-center w-100">
-            <h6 class="sub-topic w-100">Sustainable development institute</h6>
+            <h6 class="sub-topic w-100">HRsoft</h6>
             <div class="d-flex w-100 justify-content-center mt-3">
                 <div>
                     <h6 class="header-topic">Login</h6>

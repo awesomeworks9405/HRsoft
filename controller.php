@@ -59,9 +59,9 @@ else if(isset($_POST['login'])){
                         $_SESSION['user'] = $login;
                         header('location: staff_appr.php');
                      }
-                     elseif($role == 'ad'){
+                     elseif($role == 'director'){
                       $_SESSION['user'] = $login;
-                      header('location: ad/index.php');
+                      header('location: in-dir/index.php');
                       }
                   }
                   else{
@@ -80,7 +80,7 @@ else if(isset($_POST['login'])){
 
 elseif (isset($_POST['employee_appraisal'])) {
   # code...
-  $login_id = $_SESSION['user'][0]['id'];
+  $login_id = $_SESSION['user'][0]['login_id'];
   $fname = $_POST['fname'];
   $designation = $_POST['designation'];
   $employee_idn = $_POST['employee_idn']; 
@@ -154,6 +154,17 @@ if(isset($_POST['submit_category'])){
   $category = InsertCategory($category_name,$description,$date_added);
 
   header('location: admin/pages/categories/index.php');
+}
+
+if(isset($_POST['submit_dir_approval'])){
+  $promotion_id = $_POST['promotion_id'];
+  $employee_appr_id = $_POST['employee_appr_id'];
+  $approval_status = $_POST['approval_status'];
+  $description = $_POST['description'];
+
+  $dir_approval = InsertDirApproval($promotion_id,$employee_appr_id,$approval_status,$description,$date_added);
+//change to /view
+  header('location: in-dir/pages/my_approval/view.php');
 }
 
 if(isset($_POST['submit_promotion'])){

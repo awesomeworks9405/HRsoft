@@ -1,22 +1,27 @@
 <?php
 session_start();
 include '../../../functions.php';
-$username =  $_SESSION['user'][0]['username'];
+$username = $_SESSION['user'][0]['username'];
+// $login_id = $_SESSION['user'][0]['login_id'];
+// $val = getEmployee_login($login_id);
+include '../inc/session2.php';
 if(isset($_SESSION['user'])) {
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
+
+  <title>SDI | My Approval</title>
+  <?php include '../inc/head.php' ?>
   
-  <title>SDI | Students</title>
-  <?php include '../inc/head2.php' ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-<?php include '../inc/header2.php' ?>
+<?php include '../inc/header.php' ?>
   <!-- Left side column. contains the logo and sidebar -->
+ 
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -26,7 +31,7 @@ if(isset($_SESSION['user'])) {
           <img src="../../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p> HR | <?php echo $username ?></p>
+          <p> Director | <?php echo $username ?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -47,52 +52,35 @@ if(isset($_SESSION['user'])) {
         <li class="header">MAIN NAVIGATION</li>
         <li>
           <a href="../../index.php">
-            <i class="fa fa-dashboard"></i>Dashboard 
+            <i class="fa fa-dashboard"></i>Dashboard
           </a>
         </li>
 
         <li>
-            <a href="../users/index.php"><i class="fa fa-users"></i> Users </a>
+          <a href="../users/index.php"><i class="fa fa-users"></i> Users</a>
         </li>
 
         <li>
-            <a href="../appraisal/index.php"><i class="fa fa-user"></i> Employee Appraisal </a>
+          <a href="../appraisal/index.php"><i class="fa fa-user"></i> Employee Appraisal</a>
         </li>
 
         <li>
-          <a href="#"><i class="fa fa-check"></i> Approval & Recommendation</a>
+          <a href="../hr_promotions/index.php"><i class="fa fa-circle-o-notch"></i> HR Promotions</a>
         </li>
 
-        <li>
-          <a href="../promotions/index.php"><i class="fa fa-circle-o-notch"></i> Promotions</a>
-        </li>
-
-        <li>
-          <a href="../dir_approval/index.php"><i class="fa fa-gavel"></i> Director Approval</a>
-        </li>
-
-        <li>
-          <a href="../categories/index.php"><i class="fa fa-book"></i> Category</a>
-        </li>
-
-        <li>
-          <a href="../questions/index.php"><i class="fa fa-question-circle"></i> Questions</a>
-        </li>
-        
         <li class="active">
-          <a href="../students/index.php"><i class="fa fa-user"></i> Students</a>
-        </li>  
+          <a href="#"><i class="fa fa-gavel"></i> My Approval</a>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->
   </aside>
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Students
+      All Approvals
       </h1>
      
     </section>
@@ -102,56 +90,49 @@ if(isset($_SESSION['user'])) {
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Data Table With Full Features</h3>
-            </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Gender</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Address</th>
-                    <th>Occupation</th>
-                    <th>H.E.Q</th>
-                    <th>Course</th>
-                    <th>Date of Reg</th>
+                  <th>Full Name</th>
+                  <th>Designation</th>
+                  <th>New Level</th>
+                  <th>Approval Status</th>
+                  <th>Description</th>
+                  <th>Date</th>
+                  <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                   <?php
-                        $survey2 = FetchRegistered();
+                        $approval = joinApprovalPro();
+                        // die(var_dump($approval));
                         // $rank = 1;
                         // die(var_dump($survey1));
-                        foreach ($survey2 as $val) {?>
+                        foreach ($approval as $value) {?>
                 <tr>
-                <td><?php echo $val['fname']; ?></td>
-                    <td><?php echo $val['age']; ?></td>
-                    <td><?php echo $val['gender']; ?></td>
-                    <td><?php echo $val['email']; ?></td>
-                    <td><?php echo $val['phone']; ?></td>
-                    <td><?php echo $val['address']; ?></td>
-                    <td><?php echo $val['occupation']; ?></td>
-                    <td><?php echo $val['heq']; ?></td>
-                    <td><?php echo $val['training']; ?></td>
-                    <td>
-                        <?php
-                            $raw = $val['dateadded']; 
-                            $newdate = str_replace('-','/',$raw);
-                            echo $newdate;
-                        ?>
-                    </td>
-                 
+                  <td><?php echo $value['fname'];?></td>
+                  <td><?php echo $value['designation'];?></td>
+                  <td><?php echo $value['new_level'];?></td>
+                  <td><?php echo $value['approval_status'];?></td>
+                  <td><?php echo $value['description'];?></td>
+                  <td><?php echo $value['date_added'];?></td>
+                  <td>
+                    <center>
+                      <a href="../../../delprocess.php?dir_approval_id=<?php echo $value['dir_approval_id']?>" type="button" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                    </center>
+                  </td>
                 </tr>
                 
                 <?php }?>
                 
+                
                 </tbody>
+                
               </table>
+              <br>
+              <a href="../hr_promotions/index.php" class="btn btn-primary"><b>Return</b></a>
             </div>
             <!-- /.box-body -->
           </div>

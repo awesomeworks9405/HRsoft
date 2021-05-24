@@ -2,14 +2,8 @@
 session_start();
 include '../functions.php';
 $role = $_SESSION['user'][0]['role'];
-$id = $_SESSION['user'][0]['login_id'];
-$val = getEmployee_login($id);
-//Fetches the staff survey id
-$survey2 = fetchStaffsurvey2($id);
-
-// var_dump($survey2);
-
-if($role !== 'user'){
+$username = $_SESSION['user'][0]['username'];
+if($role !== 'director'){
   header('location: ../login.php');
 }
 if(isset($_SESSION['user'])) {
@@ -19,7 +13,7 @@ if(isset($_SESSION['user'])) {
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SDI | Employee Dashboard</title>
+  <title>SDI | Director Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -44,7 +38,6 @@ if(isset($_SESSION['user'])) {
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
-
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -55,7 +48,7 @@ if(isset($_SESSION['user'])) {
     <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>SDI</b></span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>SDI</b></span>
     </a>
@@ -68,12 +61,12 @@ if(isset($_SESSION['user'])) {
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-        
+          
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo $val[0]['fname'] ?></span>
+              <span class="hidden-xs">Director | <?php echo $username ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -81,7 +74,7 @@ if(isset($_SESSION['user'])) {
                 <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                <?php echo $val[0]['fname'] ?>
+                    Director | <?php echo $username ?>
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -99,7 +92,6 @@ if(isset($_SESSION['user'])) {
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
-    
         </ul>
       </div>
     </nav>
@@ -114,7 +106,7 @@ if(isset($_SESSION['user'])) {
           <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p><?php echo $val[0]['fname'] ?></p>
+          <p>Director | <?php echo $username ?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -140,11 +132,19 @@ if(isset($_SESSION['user'])) {
         </li>
 
         <li>
-          <a href="pages/profile/index.php"><i class="fa fa-user"></i> My Profile</a>
+          <a href="pages/users/index.php"><i class="fa fa-users"></i> Users</a>
         </li>
 
         <li>
-          <a href="pages/promotion/index.php"><i class="fa fa-check-circle"></i> Promotion Status</a>
+          <a href="pages/appraisal/index.php"><i class="fa fa-user"></i> Employee Appraisal</a>
+        </li>
+
+        <li>
+          <a href="pages/hr_promotions/index.php"><i class="fa fa-circle-o-notch"></i> HR Promotions</a>
+        </li>
+
+        <li>
+          <a href="pages/my_approval/index.php"><i class="fa fa-gavel"></i> My Approval</a>
         </li>
       </ul>
     </section>
@@ -174,10 +174,10 @@ if(isset($_SESSION['user'])) {
             <div class="inner">
               <h3><br></h3>
 
-              <p>My Profile</p>
+              <p>Users</p>
             </div>
             <div class="icon">
-              <i class="fa fa-user-circle"></i>
+              <i class="fa fa-users"></i>
             </div>
             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -189,10 +189,10 @@ if(isset($_SESSION['user'])) {
             <div class="inner">
               <h3><br></h3>
 
-              <p>Appraisal Responses</p>
+              <p>Employee Appraisal</p>
             </div>
             <div class="icon">
-              <i class="fa fa-check"></i>
+              <i class="fa fa-user"></i>
             </div>
             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -204,12 +204,12 @@ if(isset($_SESSION['user'])) {
             <div class="inner">
               <h3><br></h3>
 
-              <p>Promotion Status</p>
+              <p>HR Promotion</p>
             </div>
             <div class="icon">
-              <i class="fa fa-check-circle-o"></i>
+              <i class="fa fa-circle-o-notch"></i>
             </div>
-            <a href="pages/promotion/index.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->

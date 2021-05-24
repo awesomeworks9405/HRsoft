@@ -1,22 +1,29 @@
 <?php
 session_start();
 include '../../../functions.php';
-$username =  $_SESSION['user'][0]['username'];
-if(isset($_SESSION['user'])) {
-?>
+$role = $_SESSION['user'][0]['role'];
+$username = $_SESSION['user'][0]['username'];
+if($role !== 'director'){
+  header('location: ../../../login.php');
+} 
 
+ if(isset($_SESSION['user'])) {
+?>
 <!DOCTYPE html>
 <html>
 <head>
   
-  <title>SDI | Users</title>
-  <?php include '../inc/head2.php' ?>
+  <title>SDI | Promotions</title>
+  <?php include '../inc/head.php' ?>
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-   <?php include '../inc/header2.php' ?>
+  <?php include '../inc/header.php' ?>
+
   <!-- Left side column. contains the logo and sidebar -->
+  
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -26,7 +33,7 @@ if(isset($_SESSION['user'])) {
           <img src="../../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>HR | <?php echo $username ?></p>
+          <p> Director | <?php echo $username ?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -47,105 +54,54 @@ if(isset($_SESSION['user'])) {
         <li class="header">MAIN NAVIGATION</li>
         <li>
           <a href="../../index.php">
-            <i class="fa fa-dashboard"></i>Dashboard 
+            <i class="fa fa-dashboard"></i>Dashboard
           </a>
         </li>
 
+        <li>
+          <a href="../users/index.php"><i class="fa fa-users"></i> Users</a>
+        </li>
+
+        <li>
+          <a href="../appraisal/index.php"><i class="fa fa-user"></i> Employee Appraisal</a>
+        </li>
+
         <li class="active">
-            <a href="#"><i class="fa fa-users"></i> Users </a>
+          <a href="../hr_promotions/index.php"><i class="fa fa-circle-o-notch"></i> HR Promotions</a>
         </li>
 
         <li>
-            <a href="../appraisal/index.php"><i class="fa fa-user"></i> Employee Appraisal </a>
+          <a href="#"><i class="fa fa-gavel"></i> My Approval</a>
         </li>
-
-        <li>
-          <a href="#"><i class="fa fa-check"></i> Approval & Recommendation</a>
-        </li>
-
-        <li>
-          <a href="../promotions/index.php"><i class="fa fa-circle-o-notch"></i> Promotions</a>
-        </li>
-
-        <li>
-          <a href="../dir_approval/index.php"><i class="fa fa-gavel"></i> Director Approval</a>
-        </li>
-
-        <li>
-          <a href="../categories/index.php"><i class="fa fa-book"></i> Category</a>
-        </li>
-
-        <li>
-          <a href="../questions/index.php"><i class="fa fa-question-circle"></i> Questions</a>
-        </li>
-        
-        <li>
-          <a href="../students/index.php"><i class="fa fa-user"></i> Students</a>
-        </li>  
       </ul>
     </section>
     <!-- /.sidebar -->
   </aside>
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Users
+      HR Promotions
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Pages</a></li>
-        <li class="active">Users</li>
+        <li class="active">HR Promotions</li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <!-- left column -->
-        <div class="col-md-4">
-          <!-- general form elements -->
-
-          <!-- Add Category -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Add User</h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form role="form" action="../../../controller.php" method="POST">
-              <div class="box-body">
-                <label>Username:</label>
-                <input type="text" class="form-control" name="username" placeholder="Insert Username">
-                <br>
-                <div class="form-group">
-                  <label>Password:</label>
-                  <input type="password" class="form-control" name="password" placeholder="Insert Password">
-                </div>
-                <input type="hidden" class="form-control" name="role" value="user">
-              </div>
-              <!-- /.box-body -->
-              <div class="box-footer">
-                <button type="submit" class="btn btn-primary" name="user_login">Submit</button>
-              </div>
-            </form>
-          </div>
-
-
-        </div>
-        <!--/.col (left) -->
-
 
 
         <!-- right column -->
-        <div class="col-md-8">
+        <div class="col-md-12">
 
           <!-- general form elements disabled -->
           <div class="box box-warning">
             <div class="box-header with-border">
-              <h3 class="box-title">All Users</h3>
+              <h3 class="box-title">All Promotions Approved by HR</h3>
             </div>
             <!-- /.box-header -->
             <div class="box">
@@ -154,27 +110,30 @@ if(isset($_SESSION['user'])) {
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Username</th>
-                  <th>Password</th>
-                  <th>Role</th>
+                  <th>Employee Name</th>
+                  <th>Promotion Status</th>
+                  <th>Previous Level</th>
+                  <th>New Level</th>
+                  <th>Description</th>
                   <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                   <?php
-                        $log = fetchlogin();
-                        foreach ($log as $value) {
+                        $promo = getEmployeePromo();
+                        foreach ($promo as $value) {
                   ?>
                 <tr>
-                  <td><?php echo $value['username'];?></td>
-                  <td><?php echo '*********';?></td>
-                  <td><?php echo $value['role'];?></td>
-                    <td>
-                      <center>
-                        <!-- <a href="#" type="button" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a> -->
-                        <a href="../../../delprocess.php?login_id=<?php echo $value['id']?>" type="button" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
-                      </center>
-                    </td>
+                  <td><?php echo $value['fname'];?></td>
+                  <td><?php echo $value['promotion_status'];?></td>
+                  <td><?php echo $value['current_level'];?></td>
+                  <td><?php echo $value['new_level'];?></td>
+                  <td><?php echo $value['description'];?></td>
+                  <td>
+                    <center>
+                        <a href="../my_approval/index.php?id=<?php echo $value['promotion_id']?>" type="button" class="btn bg-orange btn-xs"><i class="fa fa-check"></i></a>
+                    </center>
+                  </td> 
                 </tr>
                 
                 <?php }?>
@@ -193,22 +152,25 @@ if(isset($_SESSION['user'])) {
       <!-- /.row -->
     </section>
 
-   
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2016 <a href="https://oracode.net">oraCode</a>.</strong> All rights
+    <strong>Copyright &copy; 2020-2021 <a href="https://oracode.net">oraCode.net</a>.</strong> All rights
     reserved.
   </footer>
+
+  <!-- Control Sidebar -->
   
+  <!-- /.control-sidebar -->  
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
 
-<?php include '../inc/scripts2.php' ?>
+<?php include '../inc/scripts.php' ?>
+
 <!-- page script -->
 <script>
   $(function () {

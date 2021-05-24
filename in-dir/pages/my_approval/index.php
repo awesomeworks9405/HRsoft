@@ -2,26 +2,33 @@
 session_start();
 include '../../../functions.php';
 include '../inc/session2.php';
-$username =  $_SESSION['user'][0]['username'];
+$username = $_SESSION['user'][0]['username'];
   $id = $_GET['id'];
- $val = staffy2($id);
+ $val = EmployeePromo($id);
+//  die(var_dump($val));
  if(isset($_SESSION['user'])) {
+
+  $check = CheckApprovalPro($id);
+  if (!empty($check)){
+    
+    header('location: view.php'); 
+
+}
 ?>
-
-
 
 <!DOCTYPE html>
 <html>
 <head>
 
-  <title>SDI | Employee Appraisal</title>
-  <?php include '../inc/head2.php' ?>
+  <title>SDI | My Approval</title>
+  <?php include '../inc/head.php' ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-<?php include '../inc/header2.php' ?>
+<?php include '../inc/header.php' ?>
   <!-- Left side column. contains the logo and sidebar -->
+ 
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -31,7 +38,7 @@ $username =  $_SESSION['user'][0]['username'];
           <img src="../../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p> HR | <?php echo $username ?></p>
+          <p> Director | <?php echo $username ?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -52,41 +59,25 @@ $username =  $_SESSION['user'][0]['username'];
         <li class="header">MAIN NAVIGATION</li>
         <li>
           <a href="../../index.php">
-            <i class="fa fa-dashboard"></i>Dashboard 
+            <i class="fa fa-dashboard"></i>Dashboard
           </a>
         </li>
 
         <li>
-            <a href="../users/index.php"><i class="fa fa-users"></i> Users </a>
+          <a href="../users/index.php"><i class="fa fa-users"></i> Users</a>
         </li>
 
         <li>
-            <a href="../appraisal/index.php"><i class="fa fa-user"></i> Employee Appraisal </a>
-        </li>
-
-        <li  class="active">
-          <a href="#"><i class="fa fa-check"></i> Approval & Recommendation</a>
+          <a href="../appraisal/index.php"><i class="fa fa-user"></i> Employee Appraisal</a>
         </li>
 
         <li>
-          <a href="../promotions/index.php"><i class="fa fa-circle-o-notch"></i> Promotions</a>
+          <a href="../hr_promotions/index.php"><i class="fa fa-circle-o-notch"></i> HR Promotions</a>
         </li>
 
-        <li>
-          <a href="../dir_approval/index.php"><i class="fa fa-gavel"></i> Director Approval</a>
+        <li class="active">
+          <a href="#"><i class="fa fa-gavel"></i> My Approval</a>
         </li>
-
-        <li>
-          <a href="../categories/index.php"><i class="fa fa-book"></i> Category</a>
-        </li>
-
-        <li>
-          <a href="../questions/index.php"><i class="fa fa-question-circle"></i> Questions</a>
-        </li>
-        
-        <li>
-          <a href="../students/index.php"><i class="fa fa-user"></i> Students</a>
-        </li>  
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -109,39 +100,11 @@ $username =  $_SESSION['user'][0]['username'];
     <section class="content">
 
       <div class="row">
-        <div class="col-md-3">
-
-          <!-- Profile Image -->
-          <div class="box box-primary">
-            <div class="box-body box-profile">
-
-              <h3 class="profile-username text-center"><?php echo $val[0]['fname'];?></h3>
-
-              <p class="text-muted text-center">Designation: <?php echo $val[0]['designation'];?></p>
-
-              <ul class="list-group list-group-unbordered">
-                <li class="list-group-item">
-                  <b>Employee ID:</b> <a class="pull-right"><?php echo $val[0]['employee_idn'];?></a>
-                </li>
-                <li class="list-group-item">
-                  <b>Team:</b> <a class="pull-right"><?php echo $val[0]['team'];?></a>
-                </li>
-                <li class="list-group-item">
-                  <b>Current Level:</b> <a class="pull-right"><?php echo $val[0]['current_level'];?></a>
-                </li>
-              </ul>
-
-              <a href="../appraisal/index.php" class="btn btn-primary btn-block"><b>Return</b></a>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
         <!-- /.col -->
-        <div class="col-md-9">
+        <div class="col-md-12">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li><a href="#" data-toggle="tab">HR Approval</a></li>
+              <li><a href="#" data-toggle="tab"><h4>My Approval</h4></a></li>
             </ul>
             <div class="tab-content">
               
@@ -153,45 +116,71 @@ $username =  $_SESSION['user'][0]['username'];
                   <div class="box-body">
                       <form role="form" action="../../../controller.php" method="POST">
                         <div class="box-body">
-
-                        <input type="hidden" class="form-control" name="employee_appr_id" value="<?php echo $id ?>">
+                        <input type="hidden" class="form-control" name="promotion_id" value="<?php echo $id ?>">
+                        <input type="hidden" class="form-control" name="employee_appr_id" value="<?php echo $val[0]['employee_appr_id'];?>">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <li class="list-group-item">
+                                            <b>Employee Name:</b> <a class="pull-right"><?php echo $val[0]['fname'];?></a>
+                                        </li> 
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <li class="list-group-item">
+                                            <b>Employee ID:</b> <a class="pull-right"><?php echo $val[0]['employee_idn'];?></a>
+                                        </li>
+                                    </div>
+                                </div> 
+                                <br>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <li class="list-group-item">
+                                            <b>Designation:</b> <a class="pull-right"><?php echo $val[0]['designation'];?></a>
+                                        </li> 
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <li class="list-group-item">
+                                            <b>Promotion Status by HR:</b> <a class="pull-right"><?php echo $val[0]['promotion_status'];?></a>
+                                        </li>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <li class="list-group-item">
+                                            <b>Previous Level:</b> <a class="pull-right"><?php echo $val[0]['current_level'];?></a>
+                                        </li> 
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <li class="list-group-item">
+                                            <b>New Level:</b> <a class="pull-right"><?php echo $val[0]['new_level'];?></a>
+                                        </li>
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
 
                           <div class="form-group">
                             <label>Promotion Status</label>
-                            <select id="options" onchange="myOptions();" class="form-control" name="promotion_status">
-                              <option>Select Promotion Status</option>
-                              <option value="Promoted">Promoted</option>
-                              <option value="Not Promoted">Not Promoted</option>
+                            <select id="options" onchange="myOptions();" class="form-control" name="approval_status">
+                              <option>Select Promotion Approval Status</option>
+                              <option value="Approved">Approved</option>
+                              <option value="Not Approved">Not Approved</option>
                             </select>
                           </div>
 
                           <br>
 
-                          <div id="promo_level" class="form-group" style="display: none;">
-                            <label>New Promotion Level</label>
-                            <select class="form-control" name="new_level">
-                            <option value="Null">Select New Level</option>
-                                <option value="Undergraduate Intern">Undergraduate Intern</option>
-                                <option value="Graduate Intern">Graduate Intern</option>
-                                <option value="Community Developer Trainee">Community Developer Trainee</option>
-                                <option value="Executive Community Developer">Executive Community Developer</option>
-                                <option value="Assistant Community Developer">Assistant Community Developer</option>
-                                <option value="Community Developer">Community Developer</option>
-                                <option value="Senior Community Developer">Senior Community Developer</option>
-                                <option value="Assistant Manager Community Developer">Assistant Manager Community Developer</option>
-                                <option value="Manager Community Developer">Manager Community Developer</option>
-                                <option value="Deputy Manager Community Developer">Deputy Manager Community Developer</option>
-                                <option value="General Manager Community Developer">General Manager Community Developer</option>
-                                <option value="Director">Director</option>
-                            </select>
-                          </div>
                           <div id="des" class="form-group" style="display: none;">
                               <label>Description</label>
                               <textarea class="form-control" rows="3" name='description' placeholder="Enter Description..."></textarea>
                           </div>
                           <div class="box-footer">
-                              <button id="submit" type="submit" class="btn btn-primary" name="submit_promotion" disabled>Submit</button>
+                              <button id="submit" type="submit" class="btn btn-primary" name="submit_dir_approval" disabled>Submit</button>
+                              <a href="../hr_promotions/index.php" class="btn btn-primary"><b>Return</b></a>
                           </div>
+
+                          
                           
                           <div class="form-group">
                           <input type="hidden" class="form-control" name="date_added">
@@ -207,6 +196,7 @@ $username =  $_SESSION['user'][0]['username'];
                 <!-- /.box -->
               </div>
         <!-- /.col -->
+        
       </div>
             
             </div>
@@ -235,7 +225,7 @@ $username =  $_SESSION['user'][0]['username'];
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-<?php include '../inc/scripts2.php' ?>
+<?php include '../inc/scripts.php' ?>
 
 <!-- page script -->
 <script>

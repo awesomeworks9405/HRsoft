@@ -2,30 +2,27 @@
 session_start();
 include '../../../functions.php';
 include '../inc/session2.php';
-$username =  $_SESSION['user'][0]['username']; 
+$username = $_SESSION['user'][0]['username']; 
   $id = $_GET['id'];
  $val = staffy2($id);
  if(isset($_SESSION['user'])) {
 ?>
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
   
   <title>SDI | Employee Appraisal</title>
-  <?php include '../inc/head2.php' ?>
+  <?php include '../inc/head.php' ?>
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-  <?php include '../inc/header2.php' ?>
+  <?php include '../inc/header.php' ?>
 
   <!-- Left side column. contains the logo and sidebar -->
   
-  <?php include '../inc/aside2.php' ?>
+  <?php include '../inc/aside.php' ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -160,7 +157,7 @@ $username =  $_SESSION['user'][0]['username'];
 </div>
 <!-- ./wrapper -->
 
-<?php include '../inc/scripts2.php' ?>
+<?php include '../inc/scripts.php' ?>
 
 <!-- page script -->
 <script>

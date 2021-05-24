@@ -1,8 +1,17 @@
+Director:
+username : oracode
+password : oracode
+
+HR/Admin:
 username : _sdi
 password : _sdi2020
 
+Users:
 username : tony
 password : demo
 
-username : sammycoder
-password : sammy
+username : charity
+password : chacha
+
+username : andrew
+password : andrew2020

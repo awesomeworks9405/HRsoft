@@ -2,6 +2,7 @@
 session_start();
 include '../functions.php';
 include 'pages/inc/session.php';
+$username =  $_SESSION['user'][0]['username'];
 
 if(isset($_SESSION['user'])) {
 ?>

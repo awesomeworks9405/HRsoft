@@ -2,8 +2,8 @@
 session_start();
 include '../../../functions.php';
 $login_id = $_SESSION['user'][0]['login_id'];
+$username = $_SESSION['user'][0]['username'];
 $val = getEmployee_login($login_id);
-$username =  $_SESSION['user'][0]['username'];
 include '../inc/session2.php';
 if(isset($_SESSION['user'])) {
 ?>
@@ -13,16 +13,16 @@ if(isset($_SESSION['user'])) {
 <head>
 
   <title>SDI | Staff Appraisal</title>
-  <?php include '../inc/head2.php' ?>
+  <?php include '../inc/head.php' ?>
   
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-<?php include '../inc/header2.php' ?>
+<?php include '../inc/header.php' ?>
   <!-- Left side column. contains the logo and sidebar -->
  
-  <?php include '../inc/aside2.php' ?>
+  <?php include '../inc/aside.php' ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -68,8 +68,7 @@ if(isset($_SESSION['user'])) {
                   <td>
                     <center>
                       <a href="view.php?id=<?php echo $value['employee_appr_id']?>" type="button" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></a>
-                       <a href="../approval/index.php?id=<?php echo $value['employee_appr_id']?>" type="button" class="btn bg-orange btn-xs"><i class="fa fa-check"></i></a>
-                   </center>
+                    </center>
                   </td>
                 </tr>
                 
@@ -102,7 +101,7 @@ if(isset($_SESSION['user'])) {
 </div>
 <!-- ./wrapper -->
 
-<?php include '../inc/scripts2.php' ?>
+<?php include '../inc/scripts.php' ?>
 <!-- page script -->
 <script>
   $(function () {

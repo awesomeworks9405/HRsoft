@@ -1,23 +1,25 @@
 <?php
 session_start();
 include '../../../functions.php';
-include '../inc/session2.php';
+// $login_id = $_SESSION['user'][0]['login_id'];
+// $val = getEmployee_login($login_id);
 $username =  $_SESSION['user'][0]['username'];
+include '../inc/session2.php';
 if(isset($_SESSION['user'])) {
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-  
-  <title>SDI | Questions</title>
+
+  <title>SDI | Director Approval</title>
   <?php include '../inc/head2.php' ?>
+  
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
 <?php include '../inc/header2.php' ?>
-
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -28,7 +30,7 @@ if(isset($_SESSION['user'])) {
           <img src="../../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p> HR | <?php echo $username ?></p>
+          <p>HR | <?php echo $username ?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -69,7 +71,7 @@ if(isset($_SESSION['user'])) {
           <a href="../promotions/index.php"><i class="fa fa-circle-o-notch"></i> Promotions</a>
         </li>
 
-        <li>
+        <li class="active">
           <a href="../dir_approval/index.php"><i class="fa fa-gavel"></i> Director Approval</a>
         </li>
 
@@ -77,7 +79,7 @@ if(isset($_SESSION['user'])) {
           <a href="../categories/index.php"><i class="fa fa-book"></i> Category</a>
         </li>
 
-        <li class="active">
+        <li>
           <a href="../questions/index.php"><i class="fa fa-question-circle"></i> Questions</a>
         </li>
         
@@ -88,111 +90,54 @@ if(isset($_SESSION['user'])) {
     </section>
     <!-- /.sidebar -->
   </aside>
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Questions
+      All Approvals made by Director
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Pages</a></li>
-        <li class="active">Questions</li>
-      </ol>
+     
     </section>
 
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <!-- left column -->
-        <div class="col-md-4">
-          <!-- general form elements -->
-
-          <!-- Add Question -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Add Question</h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form role="form" action="../../../controller.php" method="POST">
-              <div class="box-body">
-                <!-- <div class="form-group">
-                  <label for="exampleInputEmail1">Question Category</label>
-                  <input type="text" class="form-control" name="category" placeholder="Enter Category">
-                </div> -->
-                <div class="form-group">
-                    <label>Select Question Category</label>
-                    
-                    <select name="category_id" class="form-control">
-                    <option>Select Category</option>
-                    <?php
-                        $cat = getCategories();
-
-                        foreach ($cat as $value) {
-                  ?>
-                      
-                      <option  value="<?php echo $value['category_id'] ?>"><?php echo $value['category_name'] ?></option>
-                      
-                      <?php } ?>
-                    </select>
-                    
-                </div>
-                <div class="form-group">
-                  <label>Question</label>
-                  <textarea class="form-control" rows="3" name='name' placeholder="Enter Question..."></textarea>
-                </div>
-                <div class="form-group">
-                <input type="hidden" class="form-control" name="date_added">
-                </div>
-              </div>
-              <!-- /.box-body -->
-              <div class="box-footer">
-                <button type="submit" class="btn btn-primary" name="submit_question">Submit</button>
-              </div>
-            </form>
-          </div>
-
-        </div>
-        <!--/.col (left) -->
-
-
-
-        <!-- right column -->
-        <div class="col-md-8">
-
-          <!-- general form elements disabled -->
-          <div class="box box-warning">
-            <div class="box-header with-border">
-              <h3 class="box-title">All Questions</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box">
+        <div class="col-xs-12">
+          <div class="box">
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Category</th>
-                  <th>Question</th>
+                  <th>Full Name</th>
+                  <th>Designation</th>
+                  <th>New Level</th>
+                  <th>Approval Status</th>
+                  <th>Description</th>
+                  <th>Date</th>
                   <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                   <?php
-                        $question = getQandc();
+                        $approval = joinApprovalPro();
+                        // die(var_dump($approval));
                         // $rank = 1;
-                        foreach ($question as $value) {
-                  ?>
+                        // die(var_dump($survey1));
+                        foreach ($approval as $value) {?>
                 <tr>
-                  <td><?php echo $value['category_name'];?></td>
-                  <td><?php echo $value['name'];?></td>
+                  <td><?php echo $value['fname'];?></td>
+                  <td><?php echo $value['designation'];?></td>
+                  <td><?php echo $value['new_level'];?></td>
+                  <td><?php echo $value['approval_status'];?></td>
+                  <td><?php echo $value['description'];?></td>
+                  <td><?php echo $value['date_added'];?></td>
                   <td>
-                      <a href="#" type="button" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
-                      <a href="../../../delprocess.php?question_id=<?php echo $value['question_id']?>" type="button" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
-                    </td>
+                    <center>
+                        <a href="view.php?id=<?php echo $value['dir_approval_id']?>" type="button" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></a>
+                    </center>
+                  </td>
                 </tr>
                 
                 <?php }?>
@@ -202,16 +147,12 @@ if(isset($_SESSION['user'])) {
             </div>
             <!-- /.box-body -->
           </div>
-            <!-- /.box-body -->
-          </div>
           <!-- /.box -->
         </div>
-        <!--/.col (right) -->
+        <!-- /.col -->
       </div>
       <!-- /.row -->
     </section>
-
-   
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -219,7 +160,9 @@ if(isset($_SESSION['user'])) {
     <strong>Copyright &copy; 2021 <a href="https://oracode.net">oraCode</a>.</strong> All rights
     reserved.
   </footer>
-  
+
+
+  <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>

@@ -148,6 +148,94 @@ function InsertQuestion($name,$category_id,$date_added) {
   }
 }
 
+function InsertDirApproval($promotion_id,$employee_appr_id,$approval_status,$description,$date_added) {
+  try {
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO dir_approval(promotion_id,employee_appr_id,approval_status,description,date_added) 
+    VALUES (:promotion_id,:employee_appr_id,:approval_status,:description,:date_added)");
+    $stmt->bindParam(':promotion_id',$promotion_id);
+    $stmt->bindParam(':employee_appr_id',$employee_appr_id);
+    $stmt->bindParam(':approval_status', $approval_status);
+    $stmt->bindParam(':description', $description);
+    $stmt->bindParam(':date_added', $date_added);
+    $stmt->execute();
+    $last_id = $conn->lastInsertId();
+    return $last_id;
+  }
+  catch(PDOException $e){
+    echo "<br>" . $e->getMessage();
+  }
+}
+
+function joinApprovalPro() {
+  global $conn;
+  $query = "SELECT 
+  dir_approval.dir_approval_id, dir_approval.promotion_id, dir_approval.employee_appr_id, dir_approval.approval_status, dir_approval.description, dir_approval.date_added,
+  employee_appr.employee_appr_id, employee_appr.fname, employee_appr.designation, employee_appr.employee_idn, employee_appr.team, employee_appr.current_level,
+  employee_appr.manager_name, employee_appr.manager_idn, promotions.promotion_status, promotions.new_level
+  FROM dir_approval
+  LEFT OUTER JOIN employee_appr ON dir_approval.employee_appr_id = employee_appr.employee_appr_id
+  LEFT OUTER JOIN promotions ON dir_approval.promotion_id = promotions.promotion_id"; 
+  $execquery = $conn->query($query);
+  $fetch = $execquery->fetchAll();
+
+return $fetch;
+}
+
+function viewApprovalPro($id) {
+  global $conn;
+  $query = "SELECT 
+  dir_approval.dir_approval_id, dir_approval.promotion_id, dir_approval.employee_appr_id, dir_approval.approval_status, dir_approval.description, dir_approval.date_added,
+  employee_appr.employee_appr_id, employee_appr.fname, employee_appr.designation, employee_appr.employee_idn, employee_appr.team, employee_appr.current_level,
+  employee_appr.manager_name, employee_appr.manager_idn, promotions.promotion_status, promotions.new_level
+  FROM dir_approval
+  LEFT OUTER JOIN employee_appr ON dir_approval.employee_appr_id = employee_appr.employee_appr_id
+  LEFT OUTER JOIN promotions ON dir_approval.promotion_id = promotions.promotion_id WHERE dir_approval_id= $id"; 
+  $execquery = $conn->query($query);
+  $fetch = $execquery->fetchAll();
+
+return $fetch;
+}
+
+function OneApprovalPro($id) {
+  global $conn;
+  $query = "SELECT 
+  dir_approval.dir_approval_id, dir_approval.promotion_id, dir_approval.employee_appr_id, dir_approval.approval_status, dir_approval.description, dir_approval.date_added,
+  employee_appr.employee_appr_id, employee_appr.fname, employee_appr.designation, employee_appr.employee_idn, employee_appr.team, employee_appr.current_level,
+  employee_appr.manager_name, employee_appr.manager_idn, promotions.promotion_status, promotions.new_level
+  FROM dir_approval
+  LEFT OUTER JOIN employee_appr ON dir_approval.employee_appr_id = employee_appr.employee_appr_id
+  LEFT OUTER JOIN promotions ON dir_approval.promotion_id = promotions.promotion_id WHERE dir_approval.employee_appr_id= $id"; 
+  $execquery = $conn->query($query);
+  $fetch = $execquery->fetchAll();
+
+return $fetch;
+}
+
+function CheckApprovalPro($id) {
+  global $conn;
+  $query = "SELECT 
+  dir_approval.dir_approval_id, dir_approval.promotion_id, dir_approval.employee_appr_id, dir_approval.approval_status, dir_approval.description, dir_approval.date_added,
+  employee_appr.employee_appr_id, employee_appr.fname, employee_appr.designation, employee_appr.employee_idn, employee_appr.team, employee_appr.current_level,
+  employee_appr.manager_name, employee_appr.manager_idn, promotions.promotion_status, promotions.new_level
+  FROM dir_approval
+  LEFT OUTER JOIN employee_appr ON dir_approval.employee_appr_id = employee_appr.employee_appr_id
+  LEFT OUTER JOIN promotions ON dir_approval.promotion_id = promotions.promotion_id WHERE dir_approval.promotion_id= $id"; 
+  $execquery = $conn->query($query);
+  $fetch = $execquery->fetchAll();
+
+return $fetch;
+}
+
+// fetching director's approval
+function getApproval() {
+  global $conn;
+  $query = "SELECT * FROM dir_approval";
+  $exec = $conn->query($query);
+  $fetch = $exec->fetchAll();
+  return $fetch;
+}
+
 // fetching all questions
 function getQuestions() {
   global $conn;
@@ -313,14 +401,23 @@ function getEmployeePromo() {
   return $fetch;
 }
 
+function EmployeePromo($id) {
+  global $conn;
+  $query = "SELECT * FROM promotions INNER JOIN employee_appr ON promotions.employee_appr_id = employee_appr.employee_appr_id 
+  WHERE promotion_id = $id";
+  $exec = $conn->query($query);
+  $fetch = $exec->fetchAll();
+  return $fetch;
+}
+
 //Employee Promotion Function
-// function getEmployee_login() {
-//   global $conn;
-//   $query = "SELECT * FROM employee_appr INNER JOIN login ON employee_appr.login_id = login.login_id";
-//   $exec = $conn->query($query);
-//   $fetch = $exec->fetchAll();
-//   return $fetch;
-// }
+function fetchEmployeePromo($id) {
+  global $conn;
+  $query = "SELECT * FROM promotions WHERE employee_appr_id = $id";
+  $exec = $conn->query($query);
+  $fetch = $exec->fetchAll();
+  return $fetch;
+}
 
 function getEmployee_login($login_id) {
   try {
@@ -350,23 +447,6 @@ function CheckLoginDetails($uname,$password) {
     echo "<br>" . $e->getMessage();
   }
 }
-
-// function CheckLoginDetails($uname,$password,$role) {
-//   try {
-//     global $conn;
-//     $stmt = $conn->prepare("SELECT * FROM login WHERE username = :username AND password = :password AND role = :role");
-//     $stmt->bindParam(':username',$uname);
-//     $stmt->bindParam(':password',$password);
-//     $stmt->bindParam(':role',$role);
-//     $stmt->execute();
-//     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//     return $rows;
-//   }
-//   catch(PDOException $e){
-//     echo "<br>" . $e->getMessage();
-//   }
-// }
-
 
 function fetchlogin() {
   global $conn;

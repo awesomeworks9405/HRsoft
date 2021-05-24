@@ -4,10 +4,10 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="../../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p> HR | <?php echo $username ?></p>
+          <p><?php echo $val[0]['fname'] ?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -33,34 +33,11 @@
         </li>
 
         <li>
-            <a href="pages/users/index.php"><i class="fa fa-users"></i> Users </a>
-        </li>
-        
-
-        <li><a href="pages/appraisal/index.php"><i class="fa fa-user"></i> Employee Appraisal </a></li>
-
-        <li>
-          <a href="#"><i class="fa fa-check"></i> Approval & Recommendation</a>
+          <a href="#"><i class="fa fa-user"></i> My Profile</a>
         </li>
 
         <li>
-          <a href="pages/promotions/index.php"><i class="fa fa-circle-o-notch"></i> Promotions</a>
-        </li>
-
-        <li>
-          <a href="pages/dir_approval/index.php"><i class="fa fa-gavel"></i>Director's Approval</a>
-        </li>
-
-        <li>
-          <a href="pages/categories/index.php"><i class="fa fa-book"></i> Categories</a>
-        </li>
-
-        <li>
-          <a href="pages/questions/index.php"><i class="fa fa-question-circle"></i> Questions</a>
-        </li>
-
-        <li>
-          <a href="pages/students/index.php"><i class="fa fa-user"></i> Students</a>
+          <a href="#"><i class="fa fa-check-circle"></i> Promotion Status</a>
         </li>
       </ul>
     </section>

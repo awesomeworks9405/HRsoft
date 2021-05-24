@@ -34,4 +34,20 @@ if (isset($_GET['category_id'])) {
     header('location:./admin/pages/categories/index.php');
 }
 
+if (isset($_GET['promotion_id'])) {
+	global $conn;
+    $id = $_GET['promotion_id'];
+    $stmt = $conn->prepare("DELETE FROM categories WHERE promotion_id='$id'");
+    $stmt->execute();
+    header('location:./admin/pages/promotions/index.php');
+}
+
+if (isset($_GET['dir_approval_id'])) {
+	global $conn;
+    $id = $_GET['dir_approval_id'];
+    $stmt = $conn->prepare("DELETE FROM categories WHERE dir_approval_id='$id'");
+    $stmt->execute();
+    header('location:./admin/pages/promotions/index.php');
+}
+
 ?>

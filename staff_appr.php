@@ -1,7 +1,21 @@
 <?php
 session_start();
-include 'functions.php';
+include 'functions.php'; 
 if(isset($_SESSION['user'])) {
+$id=$_SESSION['user'][0]['login_id'];
+
+$check = getEmployee_login($id);
+
+
+if (!empty($check)){
+    
+    $val = staffy2($check[0]['employee_appr_id']);
+
+    if (!empty($val)){
+    header('location: employee/index.php');
+    }
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

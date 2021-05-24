@@ -1,41 +1,86 @@
 <?php
 session_start();
 include '../../../functions.php';
-include '../inc/session2.php';
-$username =  $_SESSION['user'][0]['username']; 
-  $id = $_GET['id'];
- $val = staffy2($id);
+$role = $_SESSION['user'][0]['role'];
+if($role !== 'user'){
+  header('location: ../../../login.php');
+} 
+  $id = $_SESSION['user'][0]['login_id'];
+  $check = getEmployee_login($id);
+ $val = staffy2($check[0]['employee_appr_id']);
+
  if(isset($_SESSION['user'])) {
 ?>
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
   
-  <title>SDI | Employee Appraisal</title>
-  <?php include '../inc/head2.php' ?>
+  <title>SDI | My Profile</title>
+  <?php include '../inc/head.php' ?>
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-  <?php include '../inc/header2.php' ?>
+  <?php include '../inc/header.php' ?>
 
   <!-- Left side column. contains the logo and sidebar -->
   
-  <?php include '../inc/aside2.php' ?>
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="../../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p><?php echo $val[0]['fname'] ?></p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
+      <!-- search form -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+          <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MAIN NAVIGATION</li>
+        <li>
+          <a href="../../index.php">
+            <i class="fa fa-dashboard"></i>Dashboard
+          </a>
+        </li>
+
+        <li class="active">
+          <a href="#"><i class="fa fa-user"></i> My Profile</a>
+        </li>
+
+        <li>
+          <a href="../promotion/index.php"><i class="fa fa-check-circle"></i> Promotion Status</a>
+        </li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-      Appraisal Details
+     My Profile & Appraisal Details
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="index.php">Employee Appraisal</a></li>
+        <li>My Profile</li>
         <li class="active">Appraisal Details</li>
       </ol>
     </section>
@@ -72,7 +117,7 @@ $username =  $_SESSION['user'][0]['username'];
                 </li>
               </ul>
 
-              <a href="index.php" class="btn btn-primary btn-block"><b>Return</b></a>
+              <a href="../../index.php" class="btn btn-primary btn-block"><b>Return</b></a>
             </div>
             <!-- /.box-body -->
           </div>
@@ -147,7 +192,7 @@ $username =  $_SESSION['user'][0]['username'];
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2021 <a href="https://oracode.net">oraCode</a>.</strong> All rights
+    <strong>Copyright &copy; 2020-2021 <a href="https://oracode.net">oraCode.net</a>.</strong> All rights
     reserved.
   </footer>
 
@@ -160,7 +205,7 @@ $username =  $_SESSION['user'][0]['username'];
 </div>
 <!-- ./wrapper -->
 
-<?php include '../inc/scripts2.php' ?>
+<?php include '../inc/scripts.php' ?>
 
 <!-- page script -->
 <script>

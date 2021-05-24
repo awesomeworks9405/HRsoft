@@ -1,7 +1,8 @@
 <?php
 session_start();
 include '../../../functions.php';
-$username =  $_SESSION['user'][0]['username'];
+include '../inc/session2.php';
+$username = $_SESSION['user'][0]['username'];
 if(isset($_SESSION['user'])) {
 ?>
 
@@ -10,13 +11,14 @@ if(isset($_SESSION['user'])) {
 <head>
   
   <title>SDI | Users</title>
-  <?php include '../inc/head2.php' ?>
+  <?php include '../inc/head.php' ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-   <?php include '../inc/header2.php' ?>
+   <?php include '../inc/header.php' ?>
   <!-- Left side column. contains the logo and sidebar -->
+  
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -26,7 +28,7 @@ if(isset($_SESSION['user'])) {
           <img src="../../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>HR | <?php echo $username ?></p>
+          <p>Director | <?php echo $username ?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -47,41 +49,25 @@ if(isset($_SESSION['user'])) {
         <li class="header">MAIN NAVIGATION</li>
         <li>
           <a href="../../index.php">
-            <i class="fa fa-dashboard"></i>Dashboard 
+            <i class="fa fa-dashboard"></i>Dashboard
           </a>
         </li>
 
         <li class="active">
-            <a href="#"><i class="fa fa-users"></i> Users </a>
+          <a href="#"><i class="fa fa-users"></i> Users</a>
         </li>
 
         <li>
-            <a href="../appraisal/index.php"><i class="fa fa-user"></i> Employee Appraisal </a>
+          <a href="../appraisal/index.php"><i class="fa fa-user"></i> Employee Appraisal</a>
         </li>
 
         <li>
-          <a href="#"><i class="fa fa-check"></i> Approval & Recommendation</a>
+          <a href="../hr_promotions/index.php"><i class="fa fa-circle-o-notch"></i> HR Promotions</a>
         </li>
 
         <li>
-          <a href="../promotions/index.php"><i class="fa fa-circle-o-notch"></i> Promotions</a>
+          <a href="../my_approval/index.php"><i class="fa fa-gavel"></i> My Approval</a>
         </li>
-
-        <li>
-          <a href="../dir_approval/index.php"><i class="fa fa-gavel"></i> Director Approval</a>
-        </li>
-
-        <li>
-          <a href="../categories/index.php"><i class="fa fa-book"></i> Category</a>
-        </li>
-
-        <li>
-          <a href="../questions/index.php"><i class="fa fa-question-circle"></i> Questions</a>
-        </li>
-        
-        <li>
-          <a href="../students/index.php"><i class="fa fa-user"></i> Students</a>
-        </li>  
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -104,43 +90,8 @@ if(isset($_SESSION['user'])) {
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <!-- left column -->
-        <div class="col-md-4">
-          <!-- general form elements -->
-
-          <!-- Add Category -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Add User</h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form role="form" action="../../../controller.php" method="POST">
-              <div class="box-body">
-                <label>Username:</label>
-                <input type="text" class="form-control" name="username" placeholder="Insert Username">
-                <br>
-                <div class="form-group">
-                  <label>Password:</label>
-                  <input type="password" class="form-control" name="password" placeholder="Insert Password">
-                </div>
-                <input type="hidden" class="form-control" name="role" value="user">
-              </div>
-              <!-- /.box-body -->
-              <div class="box-footer">
-                <button type="submit" class="btn btn-primary" name="user_login">Submit</button>
-              </div>
-            </form>
-          </div>
-
-
-        </div>
-        <!--/.col (left) -->
-
-
-
         <!-- right column -->
-        <div class="col-md-8">
+        <div class="col-md-12">
 
           <!-- general form elements disabled -->
           <div class="box box-warning">
@@ -157,7 +108,6 @@ if(isset($_SESSION['user'])) {
                   <th>Username</th>
                   <th>Password</th>
                   <th>Role</th>
-                  <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -169,12 +119,6 @@ if(isset($_SESSION['user'])) {
                   <td><?php echo $value['username'];?></td>
                   <td><?php echo '*********';?></td>
                   <td><?php echo $value['role'];?></td>
-                    <td>
-                      <center>
-                        <!-- <a href="#" type="button" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a> -->
-                        <a href="../../../delprocess.php?login_id=<?php echo $value['id']?>" type="button" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
-                      </center>
-                    </td>
                 </tr>
                 
                 <?php }?>
@@ -208,7 +152,7 @@ if(isset($_SESSION['user'])) {
 </div>
 <!-- ./wrapper -->
 
-<?php include '../inc/scripts2.php' ?>
+<?php include '../inc/scripts.php' ?>
 <!-- page script -->
 <script>
   $(function () {
