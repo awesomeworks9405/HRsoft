@@ -12,7 +12,7 @@ if(isset($_SESSION['user'])) {
 <html>
 <head>
 
-  <title>SDI | Staff Appraisal</title>
+  <title>HR-Soft | Staff Appraisal</title>
   <?php include '../inc/head2.php' ?>
   
 </head>
@@ -46,9 +46,8 @@ if(isset($_SESSION['user'])) {
                   <th>Full Name</th>
                   <th>Designation</th>
                   <th>Employee ID</th>
-                  <th>Team</th>
-                  <th>HR Manager's Name</th>
-                  <th>HR Manager's ID</th>
+                  <th>State of Origin</th>
+                  <th>L.G.A</th>
                   <th>Actions</th>
                 </tr>
                 </thead>
@@ -62,9 +61,8 @@ if(isset($_SESSION['user'])) {
                   <td><?php echo $value['fname'];?></td>
                   <td><?php echo $value['designation'];?></td>
                   <td><?php echo $value['employee_idn'];?></td>
-                  <td><?php echo $value['team'];?></td>
-                  <td><?php echo $value['manager_name'];?></td>
-                  <td><?php echo $value['manager_idn'];?></td>
+                  <td><?php echo $value['state'];?></td>
+                  <td><?php echo $value['lga'];?></td>
                   <td>
                     <center>
                       <a href="view.php?id=<?php echo $value['employee_appr_id']?>" type="button" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></a>

@@ -11,7 +11,7 @@ $username = $_SESSION['user'][0]['username'];
 <html>
 <head>
   
-  <title>SDI | Employee Appraisal</title>
+  <title>HR-Soft | Employee Appraisal</title>
   <?php include '../inc/head.php' ?>
 
 </head>
@@ -56,13 +56,13 @@ $username = $_SESSION['user'][0]['username'];
                   <b>Employee ID:</b> <a class="pull-right"><?php echo $val[0]['employee_idn'];?></a>
                 </li>
                 <li class="list-group-item">
-                  <b>Team:</b> <a class="pull-right"><?php echo $val[0]['team'];?></a>
+                  <b>State of Origin:</b> <a class="pull-right"><?php echo $val[0]['state'];?></a>
                 </li>
                 <li class="list-group-item">
-                  <b>Manager's Name:</b> <a class="pull-right"><?php echo $val[0]['manager_name'];?></a>
+                  <b>L.G.A:</b> <a class="pull-right"><?php echo $val[0]['lga'];?></a>
                 </li>
                 <li class="list-group-item">
-                  <b>Manager's ID:</b> <a class="pull-right"><?php echo $val[0]['manager_idn'];?></a>
+                  <b>D.O.B:</b> <a class="pull-right"><?php echo $val[0]['dob'];?></a>
                 </li>
                 <li class="list-group-item">
                   <b>Current Level:</b> <a class="pull-right"><?php echo $val[0]['current_level'];?></a>

@@ -56,21 +56,19 @@ function FetchRegistered() {
   }
 }
 
-function Insertstaff_appr($login_id,$fname,$designation,$employee_idn,$team,$current_level,$manager_name,$manager_idn,$date,$dlr,$date_added,$date_updated) {
+function Insertstaff_appr($login_id,$fname,$designation,$employee_idn,$state,$lga,$current_level,$dob,$date_added,$date_updated) {
   try {
     global $conn;
-    $stmt = $conn->prepare("INSERT INTO employee_appr(login_id,fname,designation,employee_idn,team,current_level,manager_name,manager_idn,date,dlr,date_added,date_updated) 
-    VALUES (:login_id,:fname,:designation,:employee_idn,:team,:current_level,:manager_name,:manager_idn,:date,:dlr,:date_added,:date_updated)");
+    $stmt = $conn->prepare("INSERT INTO employee_appr(login_id,fname,designation,employee_idn,state,lga,current_level,dob,date_added,date_updated) 
+    VALUES (:login_id,:fname,:designation,:employee_idn,:state,:lga,:current_level,:dob,:date_added,:date_updated)");
     $stmt->bindParam(':login_id',$login_id);
     $stmt->bindParam(':fname',$fname);
     $stmt->bindParam(':designation', $designation);
     $stmt->bindParam(':employee_idn', $employee_idn);
-    $stmt->bindParam(':team', $team);
+    $stmt->bindParam(':state', $state);
+    $stmt->bindParam(':lga', $lga);
     $stmt->bindParam(':current_level', $current_level);
-    $stmt->bindParam(':manager_name', $manager_name);
-    $stmt->bindParam(':manager_idn', $manager_idn);
-    $stmt->bindParam(':date', $date);
-    $stmt->bindParam(':dlr', $dlr);
+    $stmt->bindParam(':dob', $dob);
     $stmt->bindParam(':date_added', $date_added);
     $stmt->bindParam(':date_updated', $date_updated);
     $stmt->execute();
@@ -171,8 +169,8 @@ function joinApprovalPro() {
   global $conn;
   $query = "SELECT 
   dir_approval.dir_approval_id, dir_approval.promotion_id, dir_approval.employee_appr_id, dir_approval.approval_status, dir_approval.description, dir_approval.date_added,
-  employee_appr.employee_appr_id, employee_appr.fname, employee_appr.designation, employee_appr.employee_idn, employee_appr.team, employee_appr.current_level,
-  employee_appr.manager_name, employee_appr.manager_idn, promotions.promotion_status, promotions.new_level
+  employee_appr.employee_appr_id, employee_appr.fname, employee_appr.designation, employee_appr.employee_idn, employee_appr.state, employee_appr.lga, employee_appr.current_level,
+  employee_appr.dob, promotions.promotion_status, promotions.new_level
   FROM dir_approval
   LEFT OUTER JOIN employee_appr ON dir_approval.employee_appr_id = employee_appr.employee_appr_id
   LEFT OUTER JOIN promotions ON dir_approval.promotion_id = promotions.promotion_id"; 
@@ -186,8 +184,8 @@ function viewApprovalPro($id) {
   global $conn;
   $query = "SELECT 
   dir_approval.dir_approval_id, dir_approval.promotion_id, dir_approval.employee_appr_id, dir_approval.approval_status, dir_approval.description, dir_approval.date_added,
-  employee_appr.employee_appr_id, employee_appr.fname, employee_appr.designation, employee_appr.employee_idn, employee_appr.team, employee_appr.current_level,
-  employee_appr.manager_name, employee_appr.manager_idn, promotions.promotion_status, promotions.new_level
+  employee_appr.employee_appr_id, employee_appr.fname, employee_appr.designation, employee_appr.employee_idn,employee_appr.state, employee_appr.lga, employee_appr.current_level,
+  employee_appr.dob, promotions.promotion_status, promotions.new_level
   FROM dir_approval
   LEFT OUTER JOIN employee_appr ON dir_approval.employee_appr_id = employee_appr.employee_appr_id
   LEFT OUTER JOIN promotions ON dir_approval.promotion_id = promotions.promotion_id WHERE dir_approval_id= $id"; 
@@ -201,8 +199,8 @@ function OneApprovalPro($id) {
   global $conn;
   $query = "SELECT 
   dir_approval.dir_approval_id, dir_approval.promotion_id, dir_approval.employee_appr_id, dir_approval.approval_status, dir_approval.description, dir_approval.date_added,
-  employee_appr.employee_appr_id, employee_appr.fname, employee_appr.designation, employee_appr.employee_idn, employee_appr.team, employee_appr.current_level,
-  employee_appr.manager_name, employee_appr.manager_idn, promotions.promotion_status, promotions.new_level
+  employee_appr.employee_appr_id, employee_appr.fname, employee_appr.designation, employee_appr.employee_idn, employee_appr.state, employee_appr.lga, employee_appr.current_level,
+  employee_appr.dob, promotions.promotion_status, promotions.new_level
   FROM dir_approval
   LEFT OUTER JOIN employee_appr ON dir_approval.employee_appr_id = employee_appr.employee_appr_id
   LEFT OUTER JOIN promotions ON dir_approval.promotion_id = promotions.promotion_id WHERE dir_approval.employee_appr_id= $id"; 
@@ -216,8 +214,8 @@ function CheckApprovalPro($id) {
   global $conn;
   $query = "SELECT 
   dir_approval.dir_approval_id, dir_approval.promotion_id, dir_approval.employee_appr_id, dir_approval.approval_status, dir_approval.description, dir_approval.date_added,
-  employee_appr.employee_appr_id, employee_appr.fname, employee_appr.designation, employee_appr.employee_idn, employee_appr.team, employee_appr.current_level,
-  employee_appr.manager_name, employee_appr.manager_idn, promotions.promotion_status, promotions.new_level
+  employee_appr.employee_appr_id, employee_appr.fname, employee_appr.designation, employee_appr.employee_idn, employee_appr.state, employee_appr.lga, employee_appr.current_level,
+  employee_appr.dob, promotions.promotion_status, promotions.new_level
   FROM dir_approval
   LEFT OUTER JOIN employee_appr ON dir_approval.employee_appr_id = employee_appr.employee_appr_id
   LEFT OUTER JOIN promotions ON dir_approval.promotion_id = promotions.promotion_id WHERE dir_approval.promotion_id= $id"; 
@@ -346,8 +344,8 @@ function staffy2($id) {
   global $conn;
   $query = "SELECT 
   responses.response_id, responses.question_id, responses.employee_appr_id, responses.date_added, 
-  employee_appr.employee_appr_id, employee_appr.fname, employee_appr.designation, employee_appr.employee_idn, employee_appr.team, employee_appr.current_level,
-  employee_appr.manager_name, employee_appr.manager_idn, questions.name, questions.category_id
+  employee_appr.employee_appr_id, employee_appr.fname, employee_appr.designation, employee_appr.employee_idn, employee_appr.state, employee_appr.lga, employee_appr.current_level,
+  employee_appr.dob, questions.name, questions.category_id
   FROM responses
   LEFT OUTER JOIN employee_appr ON responses.employee_appr_id = employee_appr.employee_appr_id
   LEFT OUTER JOIN questions ON responses.question_id = questions.question_id WHERE responses.employee_appr_id = $id"; 

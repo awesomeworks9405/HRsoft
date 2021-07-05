@@ -15,7 +15,7 @@ if($role !== 'user'){
 <html>
 <head>
   
-  <title>SDI | Promotion Status</title>
+  <title>HR-Soft | Promotion Status</title>
   <?php include '../inc/head.php' ?>
 
 </head>
@@ -93,7 +93,7 @@ if($role !== 'user'){
 
     //Director's Promotion
     $dir = OneApprovalPro($check[0]['employee_appr_id']);
-    // die(var_dump($dir)); $promo[0]['promotion_id']
+    // die(var_dump($dir));
     ?>
 
     <div class="col-md-12">

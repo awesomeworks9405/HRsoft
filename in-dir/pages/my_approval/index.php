@@ -20,7 +20,7 @@ $username = $_SESSION['user'][0]['username'];
 <html>
 <head>
 
-  <title>SDI | My Approval</title>
+  <title>HR-Soft | My Approval</title>
   <?php include '../inc/head.php' ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">

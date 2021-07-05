@@ -13,7 +13,7 @@ if($role !== 'hr'){
 <html>
 <head>
   
-  <title>SDI | Promotions</title>
+  <title>HR-Soft | Promotions</title>
   <?php include '../inc/head2.php' ?>
 
 </head>

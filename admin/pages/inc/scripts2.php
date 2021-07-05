@@ -39,4 +39,4 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../../dist/js/demo.js"></script>
 <!-- SamJs -->
-<script src="../../../dist/js/app.js"></script>
+<script src="../../../dist/js/app2.js"></script>

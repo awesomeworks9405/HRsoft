@@ -9,7 +9,7 @@ if(isset($_SESSION['user'])) {
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SDI | HR Dashboard</title>
+  <title>HR-Soft | HR Dashboard</title>
   <?php include 'pages/inc/head.php' ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">

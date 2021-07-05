@@ -12,7 +12,7 @@ if(isset($_SESSION['user'])) {
 <html>
 <head>
 
-  <title>SDI | Director Approval</title>
+  <title>HR-Soft | Director Approval</title>
   <?php include '../inc/head2.php' ?>
   
 </head>

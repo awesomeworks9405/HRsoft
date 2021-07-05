@@ -144,15 +144,78 @@ if (!empty($check)){
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-12 mt-3">
                         <label class="custom-label">Designation *</label>
-                        <input type="text" name="designation" required class="form-control custom-input">
+                        <select name="designation" class="form-control custom-input">
+                            <option>Select Designation</option>
+                            <option value="Undergraduate Intern">Field Worker</option>
+                            <option value="Graduate Intern">Administration</option>
+                        </select>
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-12 mt-3">
                         <label class="custom-label">Employee ID *</label>
                         <input type="text" name="employee_idn" required class="form-control custom-input">
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-12 mt-3">
-                        <label class="custom-label">Team *</label>
-                        <input type="text" name="team" required class="form-control custom-input">
+                        <label class="custom-label">D.O.B *</label>
+                        <input type="date" name="dob" required class="form-control custom-input">
+                    </div>
+
+                    <div class="col-md-6 col-lg-6 col-sm-12 mt-3">
+                        <label class="custom-label">State of Origin*</label>
+                        
+                        <select onchange="toggleLGA(this);"
+                                name="state"
+                                id="state"
+                                class="form-control custom-input" required>
+                                <option value="" selected="selected">- Select -</option>
+                            <option value="Abia">Abia</option>
+                            <option value="Adamawa">Adamawa</option>
+                            <option value="AkwaIbom">AkwaIbom</option>
+                            <option value="Anambra">Anambra</option>
+                            <option value="Bauchi">Bauchi</option>
+                            <option value="Bayelsa">Bayelsa</option>
+                            <option value="Benue">Benue</option>
+                            <option value="Borno">Borno</option>
+                            <option value="Cross River">Cross River</option>
+                            <option value="Delta">Delta</option>
+                            <option value="Ebonyi">Ebonyi</option>
+                            <option value="Edo">Edo</option>
+                            <option value="Ekiti">Ekiti</option>
+                            <option value="Enugu">Enugu</option>
+                            <option value="FCT">FCT</option>
+                            <option value="Gombe">Gombe</option>
+                            <option value="Imo">Imo</option>
+                            <option value="Jigawa">Jigawa</option>
+                            <option value="Kaduna">Kaduna</option>
+                            <option value="Kano">Kano</option>
+                            <option value="Katsina">Katsina</option>
+                            <option value="Kebbi">Kebbi</option>
+                            <option value="Kogi">Kogi</option>
+                            <option value="Kwara">Kwara</option>
+                            <option value="Lagos">Lagos</option>
+                            <option value="Nasarawa">Nasarawa</option>
+                            <option value="Niger">Niger</option>
+                            <option value="Ogun">Ogun</option>
+                            <option value="Ondo">Ondo</option>
+                            <option value="Osun">Osun</option>
+                            <option value="Oyo">Oyo</option>
+                            <option value="Plateau">Plateau</option>
+                            <option value="Rivers">Rivers</option>
+                            <option value="Sokoto">Sokoto</option>
+                            <option value="Taraba">Taraba</option>
+                            <option value="Yobe">Yobe</option>
+                            <option value="Zamfara">Zamafara</option>
+                        </select>  
+                    </div>
+
+                    <div class="col-md-6 col-lg-6 col-sm-12 mt-3">
+                        <label class="custom-label">LGA *</label>
+                        <select
+                            name="lga"
+                            id="lga"
+                            class="form-control custom-input select-lga"
+                            required
+                            >
+                        </select>
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-12 mt-3">
 
@@ -174,28 +237,9 @@ if (!empty($check)){
                         </select>    
                     </div>
                 </div>
-                <br>
-                <h6><b>Details About The Review</b></h6>
+                <br><br>
+                <h6><b>The Appraisal</b></h6>
                 <hr>
-                <div class="company-sub-txt row">
-                    <div class="col-md-6 col-lg-6 col-sm-12 mt-3">
-                        <label class="custom-label">HR Manager's Name *</label>
-                        <input type="text" name="manager_name" required class="form-control custom-input">
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-sm-12 mt-3">
-                        <label class="custom-label">HR Manager's ID *</label>
-                        <input type="text" name="manager_idn" required class="form-control custom-input">
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-sm-12 mt-3">
-                        <label class="custom-label">Date *</label>
-                        <input type="date" name="date" required class="form-control custom-input">
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-sm-12 mt-3">
-                        <label class="custom-label">Date Last Reviewed *</label>
-                        <input type="date" name="dlr" required class="form-control custom-input">
-                    </div> 
-                </div>
-
                 <br>
                 <p><b>Your ratings and the meaning for those corresponding values are as follows:</b></p>
                 <div class="company-sub-txt row" style="background-color: #037e03e3; color: white;">
@@ -274,8 +318,6 @@ if (!empty($check)){
                 <br>
                 <h6><b>Performance Parameter</b></h6>
                 <hr>
-
-            
 
                 <label><b>First Half - 2021:</b></label>
                 <div class="company-sub-txt row">
@@ -443,6 +485,8 @@ if (!empty($check)){
 <script src="assets/js/index.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/respond.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="dist/js/lga.min.js"></script>
 
 </html>
 <?php }else{ ?>

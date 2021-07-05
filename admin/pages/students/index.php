@@ -9,7 +9,7 @@ if(isset($_SESSION['user'])) {
 <html>
 <head>
   
-  <title>SDI | Students</title>
+  <title>HR-Soft | Students</title>
   <?php include '../inc/head2.php' ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">

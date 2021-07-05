@@ -15,7 +15,7 @@ $username =  $_SESSION['user'][0]['username'];
 <html>
 <head>
 
-  <title>SDI | Director Approval</title>
+  <title>HR-Soft | Director Approval</title>
   <?php include '../inc/head2.php' ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">

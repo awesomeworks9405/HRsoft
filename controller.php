@@ -83,15 +83,13 @@ elseif (isset($_POST['employee_appraisal'])) {
   $login_id = $_SESSION['user'][0]['login_id'];
   $fname = $_POST['fname'];
   $designation = $_POST['designation'];
-  $employee_idn = $_POST['employee_idn']; 
-  $team = $_POST['team'];
+  $employee_idn = $_POST['employee_idn'];
+  $state = $_POST['state']; 
+  $lga = $_POST['lga'];
   $current_level = $_POST['current_level'];
-  $manager_name = $_POST['manager_name'];
-  $manager_idn = $_POST['manager_idn'];
-  $date = $_POST['date'];
-  $dlr = $_POST['dlr'];
+  $dob = $_POST['dob'];
 
-  $employee_appraisal = Insertstaff_appr($login_id,$fname,$designation,$employee_idn,$team,$current_level,$manager_name,$manager_idn,$date,$dlr,$date_added,$date_updated);
+  $employee_appraisal = Insertstaff_appr($login_id,$fname,$designation,$employee_idn,$state,$lga,$current_level,$dob,$date_added,$date_updated);
 
   // die(var_dump($employee_appraisal));
 
@@ -101,7 +99,7 @@ elseif (isset($_POST['employee_appraisal'])) {
   foreach($responses as $question_id => $response) {
   InsertResponse($question_id,$employee_appr_id,$response,$date_added);
 
-    // die(var_dump($test));
+    // die(var_dump($employee_appraisal));
   }
 
   if($employee_appraisal == true){

@@ -10,7 +10,7 @@ if(isset($_SESSION['user'])) {
 <html>
 <head>
 
-  <title>SDI | Categories</title>
+  <title>HR-Soft | Categories</title>
   <?php include '../inc/head2.php' ?>
   
 </head>

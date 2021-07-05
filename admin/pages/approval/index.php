@@ -5,16 +5,20 @@ include '../inc/session2.php';
 $username =  $_SESSION['user'][0]['username'];
   $id = $_GET['id'];
  $val = staffy2($id);
+
  if(isset($_SESSION['user'])) {
+
+  $investigate = fetchEmployeePromo($id);
+  if (!empty($investigate)){
+    
+    header('location: ../promotions/index.php'); 
+  }
 ?>
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
 
-  <title>SDI | Employee Appraisal</title>
+  <title>HR-Soft | Employee Appraisal</title>
   <?php include '../inc/head2.php' ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -124,7 +128,7 @@ $username =  $_SESSION['user'][0]['username'];
                   <b>Employee ID:</b> <a class="pull-right"><?php echo $val[0]['employee_idn'];?></a>
                 </li>
                 <li class="list-group-item">
-                  <b>Team:</b> <a class="pull-right"><?php echo $val[0]['team'];?></a>
+                  <b>L.G.A</b> <a class="pull-right"><?php echo $val[0]['lga'];?></a>
                 </li>
                 <li class="list-group-item">
                   <b>Current Level:</b> <a class="pull-right"><?php echo $val[0]['current_level'];?></a>
@@ -235,7 +239,9 @@ $username =  $_SESSION['user'][0]['username'];
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
+
 <?php include '../inc/scripts2.php' ?>
+
 
 <!-- page script -->
 <script>
